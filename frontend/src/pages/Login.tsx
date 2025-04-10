@@ -150,12 +150,20 @@ const Login = () => {
               >
                 <Box sx={{ position: 'relative', mb: 2 }}>
                   <PersonIcon
-                    color="action"
                     sx={{
                       position: 'absolute',
-                      left: 12,
-                      top: 22,
-                      zIndex: 1
+                      left: 16,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      zIndex: 1,
+                      color: 'primary.main',
+                      fontSize: 20,
+                      opacity: 0.8,
+                      transition: 'all 0.2s ease-in-out',
+                      '&:hover': {
+                        opacity: 1,
+                        transform: 'translateY(-50%) scale(1.1)',
+                      }
                     }}
                   />
                   <TextField
@@ -171,19 +179,43 @@ const Login = () => {
                     onChange={(e) => setUsername(e.target.value)}
                     sx={{
                       '& .MuiInputBase-root': {
-                        pl: 5
-                      }
+                        pl: 5,
+                        borderRadius: 2,
+                        transition: 'all 0.2s',
+                        '&:hover': {
+                          '& .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'primary.main',
+                          },
+                        },
+                      },
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderWidth: 1.5,
+                      },
+                      '& .MuiInputLabel-root': {
+                        ml: 4, // Move label to the right to avoid icon overlap
+                      },
+                      '& .MuiInputLabel-shrink': {
+                        ml: 0, // Reset margin when label shrinks
+                        transformOrigin: 'top left',
+                      },
                     }}
                   />
                 </Box>
                 <Box sx={{ position: 'relative', mb: 3 }}>
                   <LockIcon
-                    color="action"
                     sx={{
                       position: 'absolute',
-                      left: 12,
-                      top: 22,
-                      zIndex: 1
+                      left: 14,
+                      top: 24,
+                      zIndex: 1,
+                      color: 'primary.main',
+                      fontSize: 22,
+                      opacity: 0.8,
+                      transition: 'all 0.2s ease-in-out',
+                      '&:hover': {
+                        opacity: 1,
+                        transform: 'scale(1.1)',
+                      }
                     }}
                   />
                   <TextField
@@ -199,8 +231,18 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     sx={{
                       '& .MuiInputBase-root': {
-                        pl: 5
-                      }
+                        pl: 5,
+                        borderRadius: 2,
+                        transition: 'all 0.2s',
+                        '&:hover': {
+                          '& .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'primary.main',
+                          },
+                        },
+                      },
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderWidth: 1.5,
+                      },
                     }}
                   />
                 </Box>
