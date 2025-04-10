@@ -1,7 +1,7 @@
 # UMS Project
 
 ## Overview
-The UMS (User Management System) project is a web application that allows users to register, log in, and manage their profiles. Admin users have additional privileges to manage all users within the system. The application is built using React for the frontend and Go for the backend, with PostgreSQL as the database.
+The UMS (User Management System) project is a web application that allows users to sign up, sign in, and manage their profiles (admin). Admin users have additional privileges to manage all users within the system. The application is built using React for the frontend and Go for the backend, with PostgreSQL as the database.
 
 ## Project Structure
 ```
