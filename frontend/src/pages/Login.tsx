@@ -32,8 +32,8 @@ const Login = () => {
     setLoading(true);
 
     try {
-      // Replace with your actual API endpoint
-      const response = await axios.post('http://localhost:8080/api/login', {
+      // Use the proxy endpoint
+      const response = await axios.post('/api/login', {
         username,
         password,
       });
@@ -57,14 +57,32 @@ const Login = () => {
       <Box
         sx={{
           minHeight: '100vh',
+          width: '100vw',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          padding: 3,
+          padding: 0,
+          margin: 0,
+          overflow: 'auto',
         }}
       >
-        <Container maxWidth="sm">
+        <Container
+          maxWidth={false}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            maxWidth: '1200px',
+            mx: 'auto',
+            py: 4,
+            px: { xs: 2, sm: 4 },
+          }}
+        >
           <Paper
             elevation={6}
             sx={{
@@ -73,6 +91,9 @@ const Login = () => {
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
               background: 'rgba(255, 255, 255, 0.95)',
               backdropFilter: 'blur(10px)',
+              width: '100%',
+              maxWidth: '600px',
+              mx: 'auto',
             }}
           >
             <Box
@@ -129,12 +150,20 @@ const Login = () => {
               >
                 <Box sx={{ position: 'relative', mb: 2 }}>
                   <PersonIcon
-                    color="action"
                     sx={{
                       position: 'absolute',
-                      left: 12,
-                      top: 22,
-                      zIndex: 1
+                      left: 16,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      zIndex: 1,
+                      color: 'primary.main',
+                      fontSize: 20,
+                      opacity: 0.8,
+                      transition: 'all 0.2s ease-in-out',
+                      '&:hover': {
+                        opacity: 1,
+                        transform: 'translateY(-50%) scale(1.1)',
+                      }
                     }}
                   />
                   <TextField
@@ -150,19 +179,44 @@ const Login = () => {
                     onChange={(e) => setUsername(e.target.value)}
                     sx={{
                       '& .MuiInputBase-root': {
-                        pl: 5
-                      }
+                        pl: 5,
+                        borderRadius: 2,
+                        transition: 'all 0.2s',
+                        '&:hover': {
+                          '& .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'primary.main',
+                          },
+                        },
+                      },
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderWidth: 1.5,
+                      },
+                      '& .MuiInputLabel-root': {
+                        ml: 4, // Move label to the right to avoid icon overlap
+                      },
+                      '& .MuiInputLabel-shrink': {
+                        ml: 0, // Reset margin when label shrinks
+                        transformOrigin: 'top left',
+                      },
                     }}
                   />
                 </Box>
                 <Box sx={{ position: 'relative', mb: 3 }}>
                   <LockIcon
-                    color="action"
                     sx={{
                       position: 'absolute',
-                      left: 12,
-                      top: 22,
-                      zIndex: 1
+                      left: 16,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      zIndex: 1,
+                      color: 'primary.main',
+                      fontSize: 20,
+                      opacity: 0.8,
+                      transition: 'all 0.2s ease-in-out',
+                      '&:hover': {
+                        opacity: 1,
+                        transform: 'translateY(-50%) scale(1.1)',
+                      }
                     }}
                   />
                   <TextField
@@ -178,8 +232,25 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     sx={{
                       '& .MuiInputBase-root': {
-                        pl: 5
-                      }
+                        pl: 5,
+                        borderRadius: 2,
+                        transition: 'all 0.2s',
+                        '&:hover': {
+                          '& .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'primary.main',
+                          },
+                        },
+                      },
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderWidth: 1.5,
+                      },
+                      '& .MuiInputLabel-root': {
+                        ml: 4, // Move label to the right to avoid icon overlap
+                      },
+                      '& .MuiInputLabel-shrink': {
+                        ml: 0, // Reset margin when label shrinks
+                        transformOrigin: 'top left',
+                      },
                     }}
                   />
                 </Box>
