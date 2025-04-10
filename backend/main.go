@@ -17,6 +17,45 @@ import (
 
 var db *sql.DB
 
+// SetDB sets the database connection for the models package
+func SetDB(database *sql.DB) {
+	db = database
+}
+
+// corsMiddleware adds CORS headers to all responses
+func corsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Set CORS headers
+		// Check the origin of the request
+		origin := r.Header.Get("Origin")
+		allowedOrigins := []string{"http://localhost:5173", "http://localhost:5174"}
+
+		// Set the Access-Control-Allow-Origin header if the origin is allowed
+		for _, allowedOrigin := range allowedOrigins {
+			if origin == allowedOrigin {
+				w.Header().Set("Access-Control-Allow-Origin", origin)
+				break
+			}
+		}
+
+		// If no origin matched, allow all origins as a fallback
+		if w.Header().Get("Access-Control-Allow-Origin") == "" {
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+		}
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+		// Handle preflight requests
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		// Call the next handler
+		next.ServeHTTP(w, r)
+	})
+}
+
 // User represents a user in the system
 type User struct {
 	ID        string    `json:"id"`
@@ -50,10 +89,17 @@ func main() {
 		log.Fatalf("Error connecting to the database: %v", err)
 	}
 
+	// Set the global db variable for the models package
+	SetDB(db)
+
 	fmt.Println("Database connection established")
 
 	// Create a new router
 	r := mux.NewRouter()
+
+	// Add CORS middleware
+	r.Use(corsMiddleware)
+
 	apiRouter := r.PathPrefix("/api").Subrouter()
 
 	// Auth routes

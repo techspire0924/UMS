@@ -43,8 +43,8 @@ const Register = () => {
     setLoading(true);
 
     try {
-      // Replace with your actual API endpoint
-      await axios.post('http://localhost:8080/api/register', {
+      // Use the proxy endpoint
+      await axios.post('/api/register', {
         username,
         email,
         password,
@@ -70,14 +70,32 @@ const Register = () => {
       <Box
         sx={{
           minHeight: '100vh',
+          width: '100vw',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          padding: 3,
+          padding: 0,
+          margin: 0,
+          overflow: 'auto',
         }}
       >
-        <Container maxWidth="sm">
+        <Container
+          maxWidth={false}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            maxWidth: '1200px',
+            mx: 'auto',
+            py: 4,
+            px: { xs: 2, sm: 4 },
+          }}
+        >
           <Paper
             elevation={6}
             sx={{
@@ -86,6 +104,9 @@ const Register = () => {
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
               background: 'rgba(255, 255, 255, 0.95)',
               backdropFilter: 'blur(10px)',
+              width: '100%',
+              maxWidth: '600px',
+              mx: 'auto',
             }}
           >
             <Box
