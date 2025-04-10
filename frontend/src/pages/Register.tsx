@@ -165,16 +165,17 @@ const Register = () => {
                   <PersonIcon
                     sx={{
                       position: 'absolute',
-                      left: 14,
-                      top: 24,
+                      left: 16,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
                       zIndex: 1,
                       color: 'primary.main',
-                      fontSize: 22,
+                      fontSize: 20,
                       opacity: 0.8,
                       transition: 'all 0.2s ease-in-out',
                       '&:hover': {
                         opacity: 1,
-                        transform: 'scale(1.1)',
+                        transform: 'translateY(-50%) scale(1.1)',
                       }
                     }}
                   />
@@ -203,6 +204,13 @@ const Register = () => {
                       '& .MuiOutlinedInput-notchedOutline': {
                         borderWidth: 1.5,
                       },
+                      '& .MuiInputLabel-root': {
+                        ml: 4, // Move label to the right to avoid icon overlap
+                      },
+                      '& .MuiInputLabel-shrink': {
+                        ml: 0, // Reset margin when label shrinks
+                        transformOrigin: 'top left',
+                      },
                     }}
                   />
                 </Box>
@@ -210,16 +218,17 @@ const Register = () => {
                   <EmailIcon
                     sx={{
                       position: 'absolute',
-                      left: 14,
-                      top: 24,
+                      left: 16,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
                       zIndex: 1,
                       color: 'primary.main',
-                      fontSize: 22,
+                      fontSize: 20,
                       opacity: 0.8,
                       transition: 'all 0.2s ease-in-out',
                       '&:hover': {
                         opacity: 1,
-                        transform: 'scale(1.1)',
+                        transform: 'translateY(-50%) scale(1.1)',
                       }
                     }}
                   />
@@ -247,6 +256,13 @@ const Register = () => {
                       '& .MuiOutlinedInput-notchedOutline': {
                         borderWidth: 1.5,
                       },
+                      '& .MuiInputLabel-root': {
+                        ml: 4, // Move label to the right to avoid icon overlap
+                      },
+                      '& .MuiInputLabel-shrink': {
+                        ml: 0, // Reset margin when label shrinks
+                        transformOrigin: 'top left',
+                      },
                     }}
                   />
                 </Box>
@@ -254,16 +270,17 @@ const Register = () => {
                   <LockIcon
                     sx={{
                       position: 'absolute',
-                      left: 14,
-                      top: 24,
+                      left: 16,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
                       zIndex: 1,
                       color: 'primary.main',
-                      fontSize: 22,
+                      fontSize: 20,
                       opacity: 0.8,
                       transition: 'all 0.2s ease-in-out',
                       '&:hover': {
                         opacity: 1,
-                        transform: 'scale(1.1)',
+                        transform: 'translateY(-50%) scale(1.1)',
                       }
                     }}
                   />
@@ -292,6 +309,13 @@ const Register = () => {
                       '& .MuiOutlinedInput-notchedOutline': {
                         borderWidth: 1.5,
                       },
+                      '& .MuiInputLabel-root': {
+                        ml: 4, // Move label to the right to avoid icon overlap
+                      },
+                      '& .MuiInputLabel-shrink': {
+                        ml: 0, // Reset margin when label shrinks
+                        transformOrigin: 'top left',
+                      },
                     }}
                   />
                 </Box>
@@ -299,16 +323,17 @@ const Register = () => {
                   <VpnKeyIcon
                     sx={{
                       position: 'absolute',
-                      left: 14,
-                      top: 24,
+                      left: 16,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
                       zIndex: 1,
                       color: 'primary.main',
-                      fontSize: 22,
+                      fontSize: 20,
                       opacity: 0.8,
                       transition: 'all 0.2s ease-in-out',
                       '&:hover': {
                         opacity: 1,
-                        transform: 'scale(1.1)',
+                        transform: 'translateY(-50%) scale(1.1)',
                       }
                     }}
                   />
