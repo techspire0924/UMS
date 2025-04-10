@@ -361,6 +361,13 @@ const Register = () => {
                       '& .MuiOutlinedInput-notchedOutline': {
                         borderWidth: 1.5,
                       },
+                      '& .MuiInputLabel-root': {
+                        ml: 4, // Move label to the right to avoid icon overlap
+                      },
+                      '& .MuiInputLabel-shrink': {
+                        ml: 0, // Reset margin when label shrinks
+                        transformOrigin: 'top left',
+                      },
                     }}
                   />
                 </Box>
