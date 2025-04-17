@@ -83,6 +83,7 @@ UMS
 1. Set up a PostgreSQL database and configure the connection in `backend/internal/db/connection.go`.
 2. Run the SQL migration scripts located in `db/migrations` to create the necessary tables.
 
+
 ## Usage
 - Access the application through the frontend URL (usually `http://localhost:3000`).
 - Use the login and registration pages to create and manage user accounts.
