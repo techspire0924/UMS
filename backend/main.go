@@ -17,7 +17,6 @@ import (
 
 var db *sql.DB
 
-
 // SetDB sets the database connection for the models package
 func SetDB(database *sql.DB) {
 	db = database
