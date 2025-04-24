@@ -13,6 +13,15 @@ type AuthRequest struct {
 	Email    string `json:"email"`
 }
 
+type AuthResponse struct {
+	User  struct {
+		ID       string `json:"id"`
+		Username string `json:"username"`
+		Role     string `json:"role"`
+	} `json:"user"`
+	Token string `json:"token"`
+}
+
 func Register(w http.ResponseWriter, r *http.Request) {
 	var req AuthRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
@@ -31,8 +40,15 @@ func Register(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Respond with AuthResponse (simulate token)
+	resp := AuthResponse{}
+	resp.User.ID = user.ID
+	resp.User.Username = user.Username
+	resp.User.Role = boolToRole(user.IsAdmin)
+	resp.Token = "dummy-token"
+
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(user)
+	json.NewEncoder(w).Encode(resp)
 }
 
 func Login(w http.ResponseWriter, r *http.Request) {
@@ -48,8 +64,20 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Generate a token or session here
+	// Respond with AuthResponse (simulate token)
+	resp := AuthResponse{}
+	resp.User.ID = user.ID
+	resp.User.Username = user.Username
+	resp.User.Role = boolToRole(user.IsAdmin)
+	resp.Token = "dummy-token"
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(user)
+	json.NewEncoder(w).Encode(resp)
+}
+
+func boolToRole(isAdmin bool) string {
+	if isAdmin {
+		return "admin"
+	}
+	return "user"
 }
