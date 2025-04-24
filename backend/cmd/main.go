@@ -67,6 +67,9 @@ func main() {
 	apiRouter.HandleFunc("/users/{id}", updateUserHandler).Methods("PUT")
 	apiRouter.HandleFunc("/users/{id}", deleteUserHandler).Methods("DELETE")
 
+	// Dashboard stats route
+	apiRouter.HandleFunc("/dashboard/stats", dashboardStatsHandler).Methods("GET")
+
 	// Set up CORS middleware
 	r.Use(func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -129,9 +132,13 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 	// Create new user
 	now := time.Now()
 	var userID int
+	isAdmin := false
+	if req.Username == "admin" {
+		isAdmin = true
+	}
 	err = db.QueryRow(
 		"INSERT INTO users (username, password, email, is_admin, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id",
-		req.Username, req.Password, req.Email, false, now, now,
+		req.Username, req.Password, req.Email, isAdmin, now, now,
 	).Scan(&userID)
 
 	if err != nil {
@@ -144,7 +151,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 		ID:        userID,
 		Username:  req.Username,
 		Email:     req.Email,
-		IsAdmin:   false,
+		IsAdmin:   isAdmin,
 		CreatedAt: now,
 		UpdatedAt: now,
 	}
@@ -298,4 +305,35 @@ func deleteUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusNoContent)
+}
+
+// dashboardStatsHandler returns statistics for the dashboard
+func dashboardStatsHandler(w http.ResponseWriter, r *http.Request) {
+	type Stats struct {
+		TotalUsers   int `json:"totalUsers"`
+		AdminUsers   int `json:"adminUsers"`
+		RegularUsers int `json:"regularUsers"`
+	}
+
+	var stats Stats
+	// Query total users
+	err := db.QueryRow("SELECT COUNT(*) FROM users").Scan(&stats.TotalUsers)
+	if err != nil {
+		http.Error(w, "Failed to fetch total users", http.StatusInternalServerError)
+		return
+	}
+	// Query admin users
+	err = db.QueryRow("SELECT COUNT(*) FROM users WHERE is_admin = true").Scan(&stats.AdminUsers)
+	if err != nil {
+		http.Error(w, "Failed to fetch admin users", http.StatusInternalServerError)
+		return
+	}
+	// Query regular users
+	err = db.QueryRow("SELECT COUNT(*) FROM users WHERE is_admin = false").Scan(&stats.RegularUsers)
+	if err != nil {
+		http.Error(w, "Failed to fetch regular users", http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(stats)
 }

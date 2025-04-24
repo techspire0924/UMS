@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
 import {
+  Box,
+  Card,
+  CardContent,
   Typography,
-  Paper,
+  Grid,
+  Button,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Button,
+  Paper,
+  CircularProgress,
   IconButton,
   Dialog,
   DialogActions,
@@ -18,8 +23,6 @@ import {
   TextField,
   FormControlLabel,
   Switch,
-  Box,
-  CircularProgress,
 } from '@mui/material';
 import {
   Edit as EditIcon,
@@ -29,7 +32,7 @@ import {
 import axios from 'axios';
 
 interface User {
-  id: string;
+  id: number;
   username: string;
   email: string;
   isAdmin: boolean;
@@ -63,21 +66,21 @@ const UserManagement = () => {
         setTimeout(() => {
           const mockUsers: User[] = [
             {
-              id: '1',
+              id: 1,
               username: 'admin',
               email: 'admin@example.com',
               isAdmin: true,
               createdAt: '2023-01-01T00:00:00Z',
             },
             {
-              id: '2',
+              id: 2,
               username: 'user1',
               email: 'user1@example.com',
               isAdmin: false,
               createdAt: '2023-01-02T00:00:00Z',
             },
             {
-              id: '3',
+              id: 3,
               username: 'user2',
               email: 'user2@example.com',
               isAdmin: false,
@@ -161,7 +164,7 @@ const UserManagement = () => {
       
       // Update the local state with a mock response
       const mockNewUser: User = {
-        id: String(users.length + 1),
+        id: users.length + 1,
         username: newUser.username,
         email: newUser.email,
         isAdmin: newUser.isAdmin,
@@ -182,52 +185,39 @@ const UserManagement = () => {
   };
 
   return (
-    <Box>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-          mt: 4,
-          mb: 4,
-        }}
+    <Box sx={{ width: '100%', maxWidth: 1100, mx: 'auto', mt: 6 }}>
+      <Typography variant="h4" sx={{ mb: 4, fontWeight: 700, color: 'primary.main' }}>User Management</Typography>
+      <Button
+        variant="contained"
+        startIcon={<AddIcon />}
+        onClick={handleAddClick}
+        sx={{ mb: 2 }}
       >
-        <Typography variant="h4">User Management</Typography>
-        <Button
-          variant="contained"
-          startIcon={<AddIcon />}
-          onClick={handleAddClick}
-          sx={{ mt: 2 }}
-        >
-          Add User
-        </Button>
-      </Box>
-
+        Add User
+      </Button>
       {loading ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 200, width: '100%' }}>
-          <CircularProgress size={48} thickness={4} color="primary" />
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 180 }}>
+          <CircularProgress color="primary" />
         </Box>
       ) : (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: 2 }}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Username</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Role</TableCell>
-                <TableCell>Created At</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell><strong>ID</strong></TableCell>
+                <TableCell><strong>Username</strong></TableCell>
+                <TableCell><strong>Email</strong></TableCell>
+                <TableCell><strong>Role</strong></TableCell>
+                <TableCell><strong>Actions</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {users.map((user) => (
                 <TableRow key={user.id}>
+                  <TableCell>{user.id}</TableCell>
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell>{user.isAdmin ? 'Admin' : 'User'}</TableCell>
-                  <TableCell>{new Date(user.createdAt).toLocaleDateString()}</TableCell>
                   <TableCell>
                     <IconButton color="primary" onClick={() => handleEditClick(user)}>
                       <EditIcon />
