@@ -1,7 +1,7 @@
 body {
-  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  background: #f4f6fb;
-  color: #23272f;
+  font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: #111827;
+  color: #f1f5f9;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -10,13 +10,45 @@ body {
 
 ::-webkit-scrollbar {
   width: 10px;
-  background: #e3e6ed;
+  background: #1e293b;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c5cae9;
+  background: #334155;
   border-radius: 8px;
 }
 
 input, button, textarea, select {
   font-family: inherit;
+  background: #1e293b;
+  color: #f1f5f9;
+  border: 1px solid #334155;
+}
+
+.MuiPaper-root {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 8px 32px rgba(30,41,59,0.15) !important;
+  border: 1px solid #334155 !important;
+}
+
+.MuiToolbar-root {
+  background: linear-gradient(90deg, #1e293b 0%, #38bdf8 100%) !important;
+  color: #f1f5f9 !important;
+}
+
+.MuiButtonBase-root {
+  background: linear-gradient(90deg, #38bdf8 0%, #1e293b 100%) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 2px 10px rgba(56,189,248,0.08) !important;
+  border-radius: 14px !important;
+  transition: background 0.3s, box-shadow 0.3s !important;
+}
+.MuiButtonBase-root:hover {
+  background: linear-gradient(90deg, #1e293b 0%, #38bdf8 100%) !important;
+  box-shadow: 0 4px 18px rgba(30,41,59,0.13) !important;
+}
+
+.MuiContainer-root {
+  background: none !important;
+  padding: 0 !important;
 }

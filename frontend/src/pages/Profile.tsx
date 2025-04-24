@@ -120,12 +120,12 @@ const Profile = () => {
     }
 
     try {
-      // In a real application, you would update the password via your API
-      // await axios.put('http://localhost:8080/api/profile/password', {
-      //   currentPassword: password.current,
-      //   newPassword: password.new,
-      // });
-      
+      // Actually update the password via your API
+      await axios.put('/api/profile/password', {
+        currentPassword: password.current,
+        newPassword: password.new,
+      });
+
       // Clear password fields
       setPassword({
         current: '',
@@ -139,24 +139,28 @@ const Profile = () => {
       setTimeout(() => {
         setMessage({ type: '', text: '' });
       }, 3000);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error changing password:', error);
-      setMessage({ type: 'error', text: 'Failed to change password.' });
+      setMessage({ type: 'error', text: error.response?.data || 'Failed to change password.' });
     }
   };
 
   if (loading) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-        <CircularProgress />
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+        <CircularProgress size={56} thickness={4.5} color="primary" />
       </Box>
     );
   }
 
-  if (!profile) {
+  if (!profile && message.type !== 'error') {
+    return null;
+  }
+
+  if (!profile && message.type === 'error') {
     return (
-      <Box sx={{ mt: 4 }}>
-        <Typography variant="h5" color="error">
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+        <Typography color="error" variant="h6">
           Error loading profile. Please try again later.
         </Typography>
       </Box>

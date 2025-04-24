@@ -22,8 +22,8 @@ import {
   People as PeopleIcon,
   Person as PersonIcon,
   Logout as LogoutIcon,
+  Photo as PhotoIcon,
 } from '@mui/icons-material';
-import UMSLogo from '../assets/ums-logo.svg';
 
 const drawerWidth = 240;
 
@@ -53,30 +53,55 @@ const Layout = () => {
 
   const drawer = (
     <div>
-      <Toolbar>
-        <Typography variant="h6" noWrap component="div">
-          UMS
+      <Toolbar sx={{ justifyContent: 'center', bgcolor: 'primary.main', color: '#fff', minHeight: 72 }}>
+        <PhotoIcon sx={{ fontSize: 38, color: '#fff', mr: 1 }} />
+        <Typography variant="h6" noWrap component="div" sx={{ fontWeight: 800, letterSpacing: 1 }}>
+          User Management System
         </Typography>
       </Toolbar>
       <Divider />
-      <List>
+      <List sx={{ mt: 1 }}>
         {menuItems.map((item) => (
-          <ListItem key={item.text} disablePadding>
-            <ListItemButton onClick={() => handleNavigation(item.path)}>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
+          <ListItem key={item.text} disablePadding sx={{ mb: 0.5 }}>
+            <ListItemButton
+              onClick={() => handleNavigation(item.path)}
+              sx={{
+                borderRadius: 6,
+                mx: 1,
+                my: 0.5,
+                '&.Mui-selected, &.Mui-selected:hover': {
+                  bgcolor: 'primary.light',
+                  color: 'primary.main',
+                },
+                '&:hover': {
+                  bgcolor: 'action.hover',
+                },
+              }}
+              selected={window.location.pathname === item.path}
+            >
+              <ListItemIcon sx={{ color: 'primary.main', minWidth: 36 }}>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} primaryTypographyProps={{ sx: { fontWeight: 600, color: 'primary.main' } }} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Divider />
+      <Divider sx={{ my: 1 }} />
       <List>
         <ListItem disablePadding>
-          <ListItemButton onClick={handleLogout}>
-            <ListItemIcon>
+          <ListItemButton
+            onClick={handleLogout}
+            sx={{
+              borderRadius: 6,
+              mx: 1,
+              my: 0.5,
+              color: 'error.main',
+              '&:hover': { bgcolor: 'error.light', color: 'error.dark' },
+            }}
+          >
+            <ListItemIcon sx={{ color: 'error.main', minWidth: 36 }}>
               <LogoutIcon />
             </ListItemIcon>
-            <ListItemText primary="Logout" />
+            <ListItemText primary="Logout" primaryTypographyProps={{ sx: { fontWeight: 600, color: 'error.main' } }} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -84,21 +109,22 @@ const Layout = () => {
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', background: 'background.default' }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
-          background: 'linear-gradient(90deg, #1a237e 0%, #00bcd4 100%)',
-          boxShadow: '0 4px 24px rgba(26,35,126,0.10)',
+          bgcolor: '#1565C0', // Changed to a modern blue color
+          color: '#fff',
+          boxShadow: '0 4px 18px rgba(21,101,192,0.08)',
         }}
       >
-        <Toolbar sx={{ justifyContent: 'center' }}>
+        <Toolbar sx={{ justifyContent: 'center', minHeight: 72 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <img src={UMSLogo} alt="UMS Logo" style={{ height: 38, marginRight: 14 }} />
-            <Typography variant="h6" noWrap sx={{ fontWeight: 800, letterSpacing: 1 }}>
-              UMS
+            <PhotoIcon sx={{ fontSize: 38, color: '#fff', mr: 1 }} />
+            <Typography variant="h6" noWrap sx={{ fontWeight: 900, letterSpacing: 1, color: '#fff' }}>
+              User Management System
             </Typography>
           </Box>
         </Toolbar>
@@ -112,11 +138,11 @@ const Layout = () => {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: '#fff', borderRight: '1px solid #e3eafc' },
           }}
         >
           {drawer}
@@ -125,7 +151,7 @@ const Layout = () => {
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: '#fff', borderRight: '1px solid #e3eafc' },
           }}
           open
         >
@@ -134,9 +160,20 @@ const Layout = () => {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{
+          flexGrow: 1,
+          p: 0,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          minHeight: `calc(100vh - 64px)`,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginLeft: { sm: `${drawerWidth}px` },
+          boxSizing: 'border-box',
+          background: 'background.default',
+        }}
       >
-        <Toolbar />
         <Outlet />
       </Box>
     </Box>
