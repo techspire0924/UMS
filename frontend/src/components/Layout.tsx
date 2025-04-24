@@ -23,6 +23,7 @@ import {
   Person as PersonIcon,
   Logout as LogoutIcon,
 } from '@mui/icons-material';
+import UMSLogo from '../assets/ums-logo.svg';
 
 const drawerWidth = 240;
 
@@ -88,26 +89,18 @@ const Layout = () => {
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          background: 'linear-gradient(90deg, #1a237e 0%, #00bcd4 100%)',
+          boxShadow: '0 4px 24px rgba(26,35,126,0.10)',
         }}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            User Management System
-          </Typography>
-          <Button color="inherit" onClick={handleLogout}>
-            Logout
-          </Button>
+        <Toolbar sx={{ justifyContent: 'center' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <img src={UMSLogo} alt="UMS Logo" style={{ height: 38, marginRight: 14 }} />
+            <Typography variant="h6" noWrap sx={{ fontWeight: 800, letterSpacing: 1 }}>
+              UMS
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
       <Box

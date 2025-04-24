@@ -13,8 +13,12 @@ import UserManagement from './pages/UserManagement'
 import Profile from './pages/Profile'
 import NotFound from './pages/NotFound'
 
+// Import new theme and global.css
+import theme from './theme';
+import './global.css';
+
 // Create theme
-const theme = createTheme({
+const muiTheme = createTheme({
   palette: {
     primary: {
       main: '#1976d2',

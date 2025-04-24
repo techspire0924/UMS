@@ -66,18 +66,19 @@ const Dashboard = () => {
 
   return (
     <Box>
-      <Typography variant="h4" gutterBottom>
-        Dashboard
-      </Typography>
-      <Typography variant="subtitle1" color="textSecondary" paragraph>
-        Welcome to the User Management System dashboard.
-      </Typography>
-
-      <Grid container spacing={3} sx={{ mt: 2 }}>
-        <Grid item xs={12} sm={4}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', mb: 4 }}>
+        <Typography variant="h4" gutterBottom>
+          Dashboard
+        </Typography>
+        <Typography variant="subtitle1" paragraph>
+          Welcome to the User Management System dashboard.
+        </Typography>
+      </Box>
+      <Grid container direction="row" spacing={3} justifyContent="center" alignItems="center" sx={{ width: '100%', margin: 0 }}>
+        <Grid item xs={12} sm={4} sx={{ display: 'flex', justifyContent: 'center' }}>
           <Card sx={{ height: '100%' }}>
             <CardContent sx={{ textAlign: 'center' }}>
-              <PeopleIcon sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
+              <PeopleIcon sx={{ fontSize: 40, color: 'primary.main', mb: 1 }} />
               <Typography variant="h5" component="div">
                 {stats.totalUsers}
               </Typography>
@@ -85,10 +86,10 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={4} sx={{ display: 'flex', justifyContent: 'center' }}>
           <Card sx={{ height: '100%' }}>
             <CardContent sx={{ textAlign: 'center' }}>
-              <AdminIcon sx={{ fontSize: 60, color: 'secondary.main', mb: 2 }} />
+              <AdminIcon sx={{ fontSize: 40, color: 'secondary.main', mb: 1 }} />
               <Typography variant="h5" component="div">
                 {stats.adminUsers}
               </Typography>
@@ -96,10 +97,10 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={4} sx={{ display: 'flex', justifyContent: 'center' }}>
           <Card sx={{ height: '100%' }}>
             <CardContent sx={{ textAlign: 'center' }}>
-              <PersonIcon sx={{ fontSize: 60, color: 'info.main', mb: 2 }} />
+              <PersonIcon sx={{ fontSize: 40, color: 'success.main', mb: 1 }} />
               <Typography variant="h5" component="div">
                 {stats.regularUsers}
               </Typography>
