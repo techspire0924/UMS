@@ -19,7 +19,7 @@ var db *sql.DB
 
 // User represents a user in the system
 type User struct {
-	ID        string    `json:"id"`
+	ID        int       `json:"id"`
 	Username  string    `json:"username"`
 	Password  string    `json:"password,omitempty"`
 	Email     string    `json:"email"`
@@ -38,7 +38,7 @@ type AuthRequest struct {
 func main() {
 	// Initialize database connection
 	// Note: Update these credentials to match your PostgreSQL setup
-	connectionString := "host=localhost port=5432 user=postgres password=postgres dbname=postgres sslmode=disable"
+	connectionString := "host=localhost port=5432 user=postgres password=postgres dbname=ums_db sslmode=disable"
 	var err error
 	db, err = sql.Open("postgres", connectionString)
 	if err != nil {
@@ -128,7 +128,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Create new user
 	now := time.Now()
-	var userID string
+	var userID int
 	err = db.QueryRow(
 		"INSERT INTO users (username, password, email, is_admin, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id",
 		req.Username, req.Password, req.Email, false, now, now,

@@ -11,6 +11,7 @@ import {
   Paper,
   Alert,
   CssBaseline,
+  ThemeProvider,
 } from '@mui/material';
 import {
   LockOutlined as LockOutlinedIcon,
@@ -20,6 +21,7 @@ import {
   VpnKey as VpnKeyIcon,
 } from '@mui/icons-material';
 import axios from 'axios';
+import theme from '../theme';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -65,7 +67,7 @@ const Register = () => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box
         sx={{
@@ -74,7 +76,7 @@ const Register = () => {
           position: 'fixed',
           top: 0,
           left: 0,
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, #1a237e 0%, #00bcd4 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -97,15 +99,15 @@ const Register = () => {
           }}
         >
           <Paper
-            elevation={6}
+            elevation={8}
             sx={{
               p: { xs: 3, sm: 5 },
-              borderRadius: 2,
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
-              background: 'rgba(255, 255, 255, 0.95)',
+              borderRadius: 3,
+              boxShadow: '0 8px 32px rgba(26,35,126,0.10)',
+              background: 'rgba(255, 255, 255, 0.98)',
               backdropFilter: 'blur(10px)',
               width: '100%',
-              maxWidth: '600px',
+              maxWidth: '480px',
               mx: 'auto',
             }}
           >
@@ -120,9 +122,9 @@ const Register = () => {
                 sx={{
                   m: 1,
                   bgcolor: 'primary.main',
-                  width: 56,
-                  height: 56,
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                  width: 64,
+                  height: 64,
+                  boxShadow: '0 4px 16px rgba(26,35,126,0.10)'
                 }}
               >
                 <LockOutlinedIcon fontSize="large" />
@@ -131,11 +133,10 @@ const Register = () => {
                 component="h1"
                 variant="h4"
                 sx={{
-                  fontWeight: 600,
+                  fontWeight: 800,
                   mb: 1,
-                  background: 'linear-gradient(45deg, #667eea 30%, #764ba2 90%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
+                  letterSpacing: '0.01em',
+                  color: 'primary.main',
                 }}
               >
                 Create Account
@@ -170,13 +171,8 @@ const Register = () => {
                       transform: 'translateY(-50%)',
                       zIndex: 1,
                       color: 'primary.main',
-                      fontSize: 20,
+                      fontSize: 22,
                       opacity: 0.8,
-                      transition: 'all 0.2s ease-in-out',
-                      '&:hover': {
-                        opacity: 1,
-                        transform: 'translateY(-50%) scale(1.1)',
-                      }
                     }}
                   />
                   <TextField
@@ -205,10 +201,10 @@ const Register = () => {
                         borderWidth: 1.5,
                       },
                       '& .MuiInputLabel-root': {
-                        ml: 4, // Move label to the right to avoid icon overlap
+                        ml: 4,
                       },
                       '& .MuiInputLabel-shrink': {
-                        ml: 0, // Reset margin when label shrinks
+                        ml: 0,
                         transformOrigin: 'top left',
                       },
                     }}
@@ -223,13 +219,8 @@ const Register = () => {
                       transform: 'translateY(-50%)',
                       zIndex: 1,
                       color: 'primary.main',
-                      fontSize: 20,
+                      fontSize: 22,
                       opacity: 0.8,
-                      transition: 'all 0.2s ease-in-out',
-                      '&:hover': {
-                        opacity: 1,
-                        transform: 'translateY(-50%) scale(1.1)',
-                      }
                     }}
                   />
                   <TextField
@@ -257,10 +248,10 @@ const Register = () => {
                         borderWidth: 1.5,
                       },
                       '& .MuiInputLabel-root': {
-                        ml: 4, // Move label to the right to avoid icon overlap
+                        ml: 4,
                       },
                       '& .MuiInputLabel-shrink': {
-                        ml: 0, // Reset margin when label shrinks
+                        ml: 0,
                         transformOrigin: 'top left',
                       },
                     }}
@@ -275,13 +266,8 @@ const Register = () => {
                       transform: 'translateY(-50%)',
                       zIndex: 1,
                       color: 'primary.main',
-                      fontSize: 20,
+                      fontSize: 22,
                       opacity: 0.8,
-                      transition: 'all 0.2s ease-in-out',
-                      '&:hover': {
-                        opacity: 1,
-                        transform: 'translateY(-50%) scale(1.1)',
-                      }
                     }}
                   />
                   <TextField
@@ -310,10 +296,10 @@ const Register = () => {
                         borderWidth: 1.5,
                       },
                       '& .MuiInputLabel-root': {
-                        ml: 4, // Move label to the right to avoid icon overlap
+                        ml: 4,
                       },
                       '& .MuiInputLabel-shrink': {
-                        ml: 0, // Reset margin when label shrinks
+                        ml: 0,
                         transformOrigin: 'top left',
                       },
                     }}
@@ -328,13 +314,8 @@ const Register = () => {
                       transform: 'translateY(-50%)',
                       zIndex: 1,
                       color: 'primary.main',
-                      fontSize: 20,
+                      fontSize: 22,
                       opacity: 0.8,
-                      transition: 'all 0.2s ease-in-out',
-                      '&:hover': {
-                        opacity: 1,
-                        transform: 'translateY(-50%) scale(1.1)',
-                      }
                     }}
                   />
                   <TextField
@@ -362,10 +343,10 @@ const Register = () => {
                         borderWidth: 1.5,
                       },
                       '& .MuiInputLabel-root': {
-                        ml: 4, // Move label to the right to avoid icon overlap
+                        ml: 4,
                       },
                       '& .MuiInputLabel-shrink': {
-                        ml: 0, // Reset margin when label shrinks
+                        ml: 0,
                         transformOrigin: 'top left',
                       },
                     }}
@@ -381,11 +362,11 @@ const Register = () => {
                     py: 1.5,
                     borderRadius: 2,
                     fontSize: '1rem',
-                    fontWeight: 600,
-                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-                    background: 'linear-gradient(45deg, #667eea 30%, #764ba2 90%)',
+                    fontWeight: 700,
+                    boxShadow: '0 4px 12px rgba(26,35,126,0.12)',
+                    background: 'linear-gradient(90deg, #1a237e 0%, #00bcd4 100%)',
                     '&:hover': {
-                      boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2)',
+                      boxShadow: '0 6px 16px rgba(26,35,126,0.18)',
                     },
                   }}
                   disabled={loading}
@@ -399,7 +380,8 @@ const Register = () => {
                     variant="body1"
                     sx={{
                       textDecoration: 'none',
-                      fontWeight: 500,
+                      fontWeight: 600,
+                      color: 'secondary.main',
                       '&:hover': {
                         textDecoration: 'underline',
                       },
@@ -413,7 +395,7 @@ const Register = () => {
           </Paper>
         </Container>
       </Box>
-    </>
+    </ThemeProvider>
   );
 };
 

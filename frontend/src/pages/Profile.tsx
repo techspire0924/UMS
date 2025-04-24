@@ -165,17 +165,15 @@ const Profile = () => {
 
   return (
     <Box>
-      <Typography variant="h4" gutterBottom>
-        My Profile
-      </Typography>
-
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', mb: 4 }}>
+        <Typography variant="h4" gutterBottom>My Profile</Typography>
+      </Box>
       {message.text && (
-        <Alert severity={message.type as 'success' | 'error'} sx={{ mb: 3 }}>
+        <Alert severity={message.type as 'success' | 'error'} sx={{ mb: 3, width: '100%' }}>
           {message.text}
         </Alert>
       )}
-
-      <Grid container spacing={4}>
+      <Grid container direction="row" spacing={4} justifyContent="center">
         <Grid item xs={12} md={6}>
           <Paper sx={{ p: 3 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
