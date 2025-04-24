@@ -4,11 +4,11 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#21295c', // Soft Navy
+      main: '#0f2027', // Professional blue
       contrastText: '#fff',
     },
     secondary: {
-      main: '#00bcd4', // Gentle Cyan
+      main: '#2c5364', // Professional teal
       contrastText: '#fff',
     },
     background: {
@@ -66,13 +66,13 @@ const theme = createTheme({
         root: {
           borderRadius: 14,
           fontWeight: 700,
-          background: 'linear-gradient(90deg, #23263a 0%, #21295c 100%)',
+          background: 'linear-gradient(90deg, #2c5364 0%, #0f2027 100%)',
           color: '#fff',
-          boxShadow: '0 2px 8px rgba(33,41,92,0.12)',
+          boxShadow: '0 2px 8px rgba(44,83,100,0.12)',
           transition: 'background 0.3s, box-shadow 0.3s',
           '&:hover': {
-            background: 'linear-gradient(90deg, #23263a 0%, #00bcd4 100%)',
-            boxShadow: '0 4px 16px rgba(0,188,212,0.15)',
+            background: 'linear-gradient(90deg, #2c5364 0%, #43a047 100%)',
+            boxShadow: '0 4px 16px rgba(67,160,71,0.15)',
           },
         },
       },
@@ -91,8 +91,8 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          background: 'linear-gradient(90deg, #181c2f 0%, #23263a 100%)',
-          boxShadow: '0 4px 24px rgba(0,0,0,0.18)',
+          background: 'linear-gradient(90deg, #0f2027 0%, #2c5364 100%)',
+          boxShadow: '0 4px 24px rgba(44,83,100,0.12)',
         },
       },
     },
@@ -119,6 +119,45 @@ const theme = createTheme({
           borderRadius: 18,
           background: 'linear-gradient(135deg, #23263a 0%, #181c2f 100%)',
           boxShadow: '0 4px 32px rgba(33,41,92,0.12)',
+        },
+      },
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          color: '#fff',
+          backgroundColor: 'transparent',
+          border: '1px solid #fff',
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#fff',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#fff',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#fff',
+          },
+        },
+        input: {
+          color: '#fff',
+        },
+      },
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'transparent !important',
+          transition: 'background 0.2s',
+          '&:hover': {
+            background: 'linear-gradient(90deg, #2c5364 0%, #0f2027 100%)',
+            color: '#fff',
+          },
         },
       },
     },

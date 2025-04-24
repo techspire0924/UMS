@@ -22,8 +22,8 @@ import {
   People as PeopleIcon,
   Person as PersonIcon,
   Logout as LogoutIcon,
+  Photo as PhotoIcon,
 } from '@mui/icons-material';
-import UMSLogo from '../assets/ums-logo.svg';
 
 const drawerWidth = 240;
 
@@ -54,8 +54,9 @@ const Layout = () => {
   const drawer = (
     <div>
       <Toolbar>
-        <Typography variant="h6" noWrap component="div">
-          UMS
+        <PhotoIcon sx={{ fontSize: 38, color: 'primary.main', mr: 1 }} />
+        <Typography variant="h6" noWrap component="div" sx={{ fontWeight: 800, letterSpacing: 1 }}>
+          Professional Work
         </Typography>
       </Toolbar>
       <Divider />
@@ -90,15 +91,15 @@ const Layout = () => {
         position="fixed"
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
-          background: 'linear-gradient(90deg, #1a237e 0%, #00bcd4 100%)',
-          boxShadow: '0 4px 24px rgba(26,35,126,0.10)',
+          background: 'linear-gradient(90deg, #0f2027 0%, #2c5364 100%)', // More professional blue/teal
+          boxShadow: '0 4px 24px rgba(44,83,100,0.12)',
         }}
       >
         <Toolbar sx={{ justifyContent: 'center' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <img src={UMSLogo} alt="UMS Logo" style={{ height: 38, marginRight: 14 }} />
-            <Typography variant="h6" noWrap sx={{ fontWeight: 800, letterSpacing: 1 }}>
-              UMS
+            <PhotoIcon sx={{ fontSize: 38, color: 'secondary.main', mr: 1 }} />
+            <Typography variant="h6" noWrap sx={{ fontWeight: 900, letterSpacing: 1 }}>
+              User Management System
             </Typography>
           </Box>
         </Toolbar>
@@ -136,7 +137,7 @@ const Layout = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          p: 0,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           minHeight: `calc(100vh - 64px)`,
           display: 'flex',
@@ -147,7 +148,8 @@ const Layout = () => {
           boxSizing: 'border-box',
         }}
       >
-        <Toolbar />
+        {/* Remove or resize Toolbar for main content spacing */}
+        {/* <Toolbar sx={{ minHeight: 32, height: 32, px: 0 }} /> */}
         <Outlet />
       </Box>
     </Box>

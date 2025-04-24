@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
+import { Helmet } from 'react-helmet';
 
 // Components
 import Layout from './components/Layout'
@@ -48,6 +49,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <title>User Management System</title>
+      </Helmet>
       <CssBaseline />
       <Routes>
         <Route path="/login" element={<Login />} />
