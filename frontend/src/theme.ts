@@ -2,18 +2,18 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
-      main: '#1a237e', // Deep Indigo
+      main: '#21295c', // Soft Navy
       contrastText: '#fff',
     },
     secondary: {
-      main: '#00bcd4', // Cyan
+      main: '#00bcd4', // Gentle Cyan
       contrastText: '#fff',
     },
     background: {
-      default: '#f4f6fb',
-      paper: '#fff',
+      default: '#181c2f', // Deep blue-black
+      paper: '#23263a', // Slightly lighter for cards/paper
     },
     success: {
       main: '#43a047',
@@ -25,11 +25,11 @@ const theme = createTheme({
       main: '#ffa000',
     },
     info: {
-      main: '#1976d2',
+      main: '#00bcd4',
     },
     text: {
-      primary: '#23272f',
-      secondary: '#7b809a',
+      primary: '#f5f6fa', // Gentle off-white
+      secondary: '#b0b8d1', // Muted blue-gray
     },
   },
   typography: {
@@ -66,6 +66,14 @@ const theme = createTheme({
         root: {
           borderRadius: 14,
           fontWeight: 700,
+          background: 'linear-gradient(90deg, #23263a 0%, #21295c 100%)',
+          color: '#fff',
+          boxShadow: '0 2px 8px rgba(33,41,92,0.12)',
+          transition: 'background 0.3s, box-shadow 0.3s',
+          '&:hover': {
+            background: 'linear-gradient(90deg, #23263a 0%, #00bcd4 100%)',
+            boxShadow: '0 4px 16px rgba(0,188,212,0.15)',
+          },
         },
       },
     },
@@ -73,6 +81,35 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 18,
+          background: 'linear-gradient(135deg, #23263a 0%, #181c2f 100%)',
+          boxShadow: '0 8px 32px rgba(33,41,92,0.18)',
+          backdropFilter: 'blur(6px)',
+          border: '1px solid rgba(255,255,255,0.04)',
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          background: 'linear-gradient(90deg, #181c2f 0%, #23263a 100%)',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.18)',
+        },
+      },
+    },
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          minHeight: 64,
+          background: 'transparent',
+          boxShadow: 'none',
+        },
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          background: 'none',
+          padding: 0,
         },
       },
     },
@@ -80,7 +117,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 18,
-          boxShadow: '0 4px 32px rgba(26,35,126,0.08)',
+          background: 'linear-gradient(135deg, #23263a 0%, #181c2f 100%)',
+          boxShadow: '0 4px 32px rgba(33,41,92,0.12)',
         },
       },
     },

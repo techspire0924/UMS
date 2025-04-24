@@ -12,6 +12,7 @@ import {
   Alert,
   CssBaseline,
   ThemeProvider,
+  CircularProgress,
 } from '@mui/material';
 import {
   LockOutlined as LockOutlinedIcon,
@@ -63,7 +64,7 @@ const Login = () => {
           position: 'fixed',
           top: 0,
           left: 0,
-          background: 'linear-gradient(135deg, #1a237e 0%, #00bcd4 100%)',
+          background: '#181c2f',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -88,80 +89,31 @@ const Login = () => {
           <Paper
             elevation={8}
             sx={{
-              p: { xs: 3, sm: 5 },
-              borderRadius: 3,
-              boxShadow: '0 8px 32px rgba(26,35,126,0.10)',
-              background: 'rgba(255, 255, 255, 0.98)',
-              backdropFilter: 'blur(10px)',
+              p: 5,
+              borderRadius: 6,
+              background: '#23263a',
+              boxShadow: '0 8px 32px rgba(33,41,92,0.22)',
+              border: '1.5px solid rgba(0,188,212,0.10)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              maxWidth: 420,
               width: '100%',
-              maxWidth: '480px',
-              mx: 'auto',
             }}
           >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <Avatar
-                sx={{
-                  m: 1,
-                  bgcolor: 'primary.main',
-                  width: 64,
-                  height: 64,
-                  boxShadow: '0 4px 16px rgba(26,35,126,0.10)',
-                }}
-              >
-                <LockOutlinedIcon fontSize="large" />
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+              <Avatar sx={{ bgcolor: '#fff', width: 64, height: 64, mb: 2, boxShadow: '0 4px 16px rgba(0,188,212,0.18)' }}>
+                <LockOutlinedIcon fontSize="large" sx={{ color: '#23263a' }} />
               </Avatar>
-              <Typography
-                component="h1"
-                variant="h4"
-                sx={{
-                  fontWeight: 800,
-                  mb: 1,
-                  letterSpacing: '0.01em',
-                  color: 'primary.main',
-                }}
-              >
+              <Typography variant="h4" sx={{ fontWeight: 800, color: '#fff', mb: 1, letterSpacing: 1 }}>
                 Welcome Back
               </Typography>
-              <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 3 }}>
+              <Typography variant="subtitle1" sx={{ color: '#fff', mb: 3 }}>
                 Sign in to your account
               </Typography>
-              {error && (
-                <Alert
-                  severity="error"
-                  sx={{
-                    width: '100%',
-                    mb: 3,
-                    borderRadius: 1,
-                  }}
-                >
-                  {error}
-                </Alert>
-              )}
-              <Box
-                component="form"
-                onSubmit={handleSubmit}
-                noValidate
-                sx={{ width: '100%' }}
-              >
-                <Box sx={{ position: 'relative', mb: 2 }}>
-                  <PersonIcon
-                    sx={{
-                      position: 'absolute',
-                      left: 16,
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      zIndex: 1,
-                      color: 'primary.main',
-                      fontSize: 22,
-                      opacity: 0.8,
-                    }}
-                  />
+              <form noValidate style={{ width: '100%' }}>
+                <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', bgcolor: 'rgba(33,41,92,0.12)', borderRadius: 2, px: 2 }}>
+                  <PersonIcon sx={{ color: '#fff', mr: 1 }} />
                   <TextField
                     margin="normal"
                     required
@@ -173,43 +125,21 @@ const Login = () => {
                     autoFocus
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    sx={{
-                      '& .MuiInputBase-root': {
-                        pl: 5,
+                    InputProps={{
+                      sx: {
+                        color: '#f5f6fa',
+                        background: 'transparent',
                         borderRadius: 2,
-                        transition: 'all 0.2s',
-                        '&:hover': {
-                          '& .MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'primary.main',
-                          },
+                        '& .MuiOutlinedInput-notchedOutline': {
+                          borderColor: '#fff',
                         },
                       },
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderWidth: 1.5,
-                      },
-                      '& .MuiInputLabel-root': {
-                        ml: 4,
-                      },
-                      '& .MuiInputLabel-shrink': {
-                        ml: 0,
-                        transformOrigin: 'top left',
-                      },
                     }}
+                    InputLabelProps={{ sx: { color: '#fff' } }}
                   />
                 </Box>
-                <Box sx={{ position: 'relative', mb: 3 }}>
-                  <LockIcon
-                    sx={{
-                      position: 'absolute',
-                      left: 16,
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      zIndex: 1,
-                      color: 'primary.main',
-                      fontSize: 22,
-                      opacity: 0.8,
-                    }}
-                  />
+                <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', bgcolor: 'rgba(33,41,92,0.12)', borderRadius: 2, px: 2 }}>
+                  <LockIcon sx={{ color: '#fff', mr: 1 }} />
                   <TextField
                     margin="normal"
                     required
@@ -221,69 +151,54 @@ const Login = () => {
                     autoComplete="current-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    sx={{
-                      '& .MuiInputBase-root': {
-                        pl: 5,
+                    InputProps={{
+                      sx: {
+                        color: '#f5f6fa',
+                        background: 'transparent',
                         borderRadius: 2,
-                        transition: 'all 0.2s',
-                        '&:hover': {
-                          '& .MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'primary.main',
-                          },
+                        '& .MuiOutlinedInput-notchedOutline': {
+                          borderColor: '#fff',
                         },
                       },
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderWidth: 1.5,
-                      },
-                      '& .MuiInputLabel-root': {
-                        ml: 4,
-                      },
-                      '& .MuiInputLabel-shrink': {
-                        ml: 0,
-                        transformOrigin: 'top left',
-                      },
                     }}
+                    InputLabelProps={{ sx: { color: '#fff' } }}
                   />
                 </Box>
+                {error && (
+                  <Alert severity="error" sx={{ mt: 2, borderRadius: 2, bgcolor: 'error.dark', color: '#fff' }}>{error}</Alert>
+                )}
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
+                  color="primary"
                   sx={{
-                    mt: 1,
-                    mb: 3,
-                    py: 1.5,
-                    borderRadius: 2,
-                    fontSize: '1rem',
+                    mt: 3,
+                    mb: 2,
+                    borderRadius: 3,
                     fontWeight: 700,
-                    boxShadow: '0 4px 12px rgba(26,35,126,0.12)',
-                    background: 'linear-gradient(90deg, #1a237e 0%, #00bcd4 100%)',
+                    boxShadow: '0 4px 16px rgba(0,188,212,0.10)',
+                    fontSize: '1.1rem',
+                    letterSpacing: 1,
+                    background: '#fff',
+                    color: '#23263a',
+                    transition: 'background 0.3s',
                     '&:hover': {
-                      boxShadow: '0 6px 16px rgba(26,35,126,0.18)',
+                      background: '#f5f6fa',
+                      color: '#21295c',
                     },
                   }}
                   disabled={loading}
+                  onClick={handleSubmit}
                 >
-                  {loading ? 'Signing in...' : 'Sign In'}
+                  {loading ? <CircularProgress size={24} color="inherit" /> : 'Sign In'}
                 </Button>
-                <Box sx={{ textAlign: 'center' }}>
-                  <Link
-                    component={RouterLink}
-                    to="/register"
-                    variant="body1"
-                    sx={{
-                      textDecoration: 'none',
-                      fontWeight: 600,
-                      color: 'secondary.main',
-                      '&:hover': {
-                        textDecoration: 'underline',
-                      },
-                    }}
-                  >
-                    {"Don't have an account? Sign Up"}
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+                  <Link component={RouterLink} to="/register" variant="body2" sx={{ color: '#fff' }}>
+                    Don't have an account? Register
                   </Link>
                 </Box>
-              </Box>
+              </form>
             </Box>
           </Paper>
         </Container>
