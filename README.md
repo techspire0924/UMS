@@ -3,47 +3,6 @@
 ## Overview
 The UMS (User Management System) project is a web application that allows users to sign up, sign in, and manage their profiles (admin). Admin users have additional privileges to manage all users within the system. The application is built using React for the frontend and Go for the backend, with PostgreSQL as the database.
 
-
-## Project Structure
-```
-UMS
-├── frontend
-│   ├── src
-│   │   ├── components
-│   │   │   ├── Sidebar.tsx
-│   │   │   ├── HomePage.tsx
-│   │   │   └── AdminPanel.tsx
-│   │   ├── pages
-│   │   │   ├── LoginPage.tsx
-│   │   │   ├── RegisterPage.tsx
-│   │   │   └── Dashboard.tsx
-│   │   ├── App.tsx
-│   │   └── main.tsx
-│   ├── public
-│   │   └── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── vite.config.ts
-├── backend
-│   ├── cmd
-│   │   └── main.go
-│   ├── internal
-│   │   ├── handlers
-│   │   │   ├── auth.go
-│   │   │   └── user.go
-│   │   ├── models
-│   │   │   └── user.go
-│   │   └── db
-│   │       └── connection.go
-│   ├── go.mod
-│   └── go.sum
-├── db
-│   └── migrations
-│       ├── 001_create_users_table.sql
-│       └── 002_add_admin_column.sql
-└── README.md
-```
-
 ## Technologies Used
 - **Frontend**: React, TypeScript, Vite, Material UI, Axios
 - **Backend**: Go, PostgreSQL
