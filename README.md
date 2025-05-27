@@ -15,7 +15,6 @@ The UMS (User Management System) project is a web application that allows users 
 5. A left sidebar for easy navigation between pages.
 6. Axios for making RESTful API calls to the backend.
 
-
 ## Setup Instructions
 
 ### Frontend
