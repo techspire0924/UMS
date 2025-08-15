@@ -49,6 +49,5 @@ The UMS (User Management System) project is a web application that allows users 
 - Use the login and registration pages to create and manage user accounts.
 - Admin users can access the admin panel to manage all users.
 
-
 ## Contributing
 Contributions are welcome! Please submit a pull request or open an issue for any enhancements or bug fixes.
