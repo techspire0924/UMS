@@ -21,7 +21,6 @@ createdb ums_db
 psql -d ums_db -f schema.sql
 ```
 
-
 3. Update the database connection string in `cmd/main.go` if needed.
 
 4. Install dependencies:
