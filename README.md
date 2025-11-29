@@ -17,6 +17,7 @@ The UMS (User Management System) project is a web application that allows users 
 
 ## Setup Instructions
 
+
 ### Frontend
 1. Navigate to the `frontend` directory.
 2. Install dependencies:
